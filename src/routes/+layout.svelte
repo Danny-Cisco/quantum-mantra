@@ -21,11 +21,11 @@
 		<!-- App Bar -->
 		<AppBar>
 			<svelte:fragment slot="lead">
-				<strong class="text-xl uppercase">Quantum Mantra</strong>
+				<strong class="text-xl uppercase text-primary-500">Quantum Mantra</strong>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
 				<a
-					class="btn btn-sm variant-ghost-surface"
+					class="btn btn-sm variant-outline-primary"
 					href="https://dannycisco.com"
 					target="_blank"
 					rel="noreferrer"
