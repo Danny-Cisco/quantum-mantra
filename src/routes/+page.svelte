@@ -23,7 +23,7 @@
 	let number = 0;
 
 	onMount(async () => {
-		const response = await fetch('/api/generate-quantum-number', { method: 'POST' });
+		const response = await fetch('$lib/api/generate-quantum-number.ts', { method: 'POST' });
 		if (response.ok) {
 			const data = await response.json();
 			number = data.number;
