@@ -29,50 +29,57 @@ const useCommonConsonantProb = 0.7;
 const useCommonVowelProb = 0.7;
 const useCommonEndProb = 0.7;
 
-function getRandomElement(array) {
-	return array[Math.floor(Math.random() * array.length)];
-}
+export function generateRandomWord(randomNumbers: number[]) {
+	const maxRandomValue = 65535;
+	let randomIndex = 0;
 
-function generateRandomSyllable() {
-	const startWithConsonant = Math.random() < startWithConsonantProb;
-	let syllable = '';
-
-	if (startWithConsonant) {
-		const useCommonConsonant = Math.random() < useCommonConsonantProb;
-		syllable += getRandomElement(useCommonConsonant ? commonConsonants : rareConsonants);
+	function nextRandom() {
+		const value = randomNumbers[randomIndex++] / maxRandomValue;
+		return value;
+	}
+	function getRandomElement(array) {
+		return array[Math.floor(nextRandom() * array.length)];
 	}
 
-	const useCommonVowel = Math.random() < useCommonVowelProb;
-	syllable += getRandomElement(useCommonVowel ? commonVowels : rareVowels);
+	function generateRandomSyllable() {
+		const startWithConsonant = nextRandom() < startWithConsonantProb;
+		let syllable = '';
 
-	if (!startWithConsonant) {
-		// If the syllable started without a consonant, always end with a consonant
-		const useCommonEnd = Math.random() < useCommonEndProb;
-		syllable += getRandomElement(useCommonEnd ? commonEnds : rareEnds);
-	} else {
-		// If the syllable started with a consonant, use the original probability to end with a consonant
-		const endWithConsonant = Math.random() < endWithConsonantProb;
-		if (endWithConsonant) {
-			const useCommonEnd = Math.random() < useCommonEndProb;
+		if (startWithConsonant) {
+			const useCommonConsonant = nextRandom() < useCommonConsonantProb;
+			syllable += getRandomElement(useCommonConsonant ? commonConsonants : rareConsonants);
+		}
+
+		const useCommonVowel = nextRandom() < useCommonVowelProb;
+		syllable += getRandomElement(useCommonVowel ? commonVowels : rareVowels);
+
+		if (!startWithConsonant) {
+			const useCommonEnd = nextRandom() < useCommonEndProb;
 			syllable += getRandomElement(useCommonEnd ? commonEnds : rareEnds);
 		} else {
-			syllable += 'h';
+			const endWithConsonant = nextRandom() < endWithConsonantProb;
+			if (endWithConsonant) {
+				const useCommonEnd = nextRandom() < useCommonEndProb;
+				syllable += getRandomElement(useCommonEnd ? commonEnds : rareEnds);
+			} else {
+				syllable += 'h';
+			}
 		}
+
+		return syllable;
 	}
 
-	return syllable;
-}
-
-export function generateRandomWord() {
-	const numSyllables = Math.floor(Math.random() * 3) + 1;
+	const numSyllables = Math.floor(nextRandom() * 3) + 1; // Adjust the random formula to fit your range and precision
 	const syllables = [];
 
 	for (let i = 0; i < numSyllables; i++) {
 		syllables.push(generateRandomSyllable());
 	}
 
-	const emphasisIndex = Math.floor(Math.random() * numSyllables);
+	const emphasisIndex = Math.floor(nextRandom() * numSyllables);
 	syllables[emphasisIndex] = syllables[emphasisIndex].toUpperCase();
+
+	console.log('random index =', randomIndex);
 
 	return syllables.join('-');
 }

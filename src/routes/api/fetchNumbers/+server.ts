@@ -4,9 +4,9 @@ import { VITE_API_URL, VITE_API_KEY } from '$env/static/private';
 export async function GET(): Promise<Response> {
 	const API_URL = VITE_API_URL;
 	const API_KEY = VITE_API_KEY;
-	const arrayLength = '4';
+	const arrayLength = '40';
 	const dataType = 'uint16';
-	const blockSize = '2';
+	const blockSize = '1';
 
 	const url = `${API_URL}?length=${arrayLength}&type=${dataType}&size=${blockSize}`;
 

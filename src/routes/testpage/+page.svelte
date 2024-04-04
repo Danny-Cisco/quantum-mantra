@@ -1,28 +1,13 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { handleFetchNewNumbers } from '$lib/utils/fetchNewNumbers';
 
-	export let data; // Initial data loaded through load function
-	let output = JSON.stringify(data.data); // Initialize output with the initial data
+	let word = '';
 
-	onMount(() => {
-		console.log(data);
-	});
-
-	async function handleFetchNewNumbers() {
-		try {
-			const response = await fetch('/api/fetchNumbers');
-			if (!response.ok) {
-				throw new Error(`Error: ${response.statusText}`);
-			}
-			const newData = await response.json();
-			output = JSON.stringify(newData.data); // Update output with the new data
-		} catch (error) {
-			console.error('Error:', error);
-			output = `Error: ${error.message}`; // Display error message
-		}
+	function handleClick() {
+		word = handleFetchNewNumbers();
 	}
 </script>
 
 <div class="text-xl font-bold">Test Page</div>
-<button on:click={handleFetchNewNumbers}>Fetch New Numbers</button>
-<div>{output}</div>
+<button on:click={handleclick}>Generate Mantra</button>
+<div>{word}</div>

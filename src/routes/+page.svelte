@@ -3,33 +3,21 @@
 	import { fade } from 'svelte/transition';
 
 	import { generateRandomWord } from '$lib/utils/wordGenerator';
+	import { handleFetchNewNumbers } from '$lib/utils/fetchNewNumbers';
 
-	let word = generateRandomWord();
+	let numbers = [];
+	let word = '';
 
-	function handleClick() {
-		word = generateRandomWord();
+	async function handleClick() {
+		numbers = handleFetchNewNumbers();
+		word = generateRandomWord(await numbers);
 	}
 
 	let pageReady = false;
 
-	// // Example usage within an async context
-	// async function exampleUsage() {
-	// 	const randomNumber = await getQuantumRandomNumber();
-	// 	console.log('Quantum random number:', randomNumber);
-	// }
-
-	// exampleUsage();
-
-	let number = 0;
-
 	onMount(async () => {
-		const response = await fetch('$lib/api/generate-quantum-number.ts', { method: 'POST' });
-		if (response.ok) {
-			const data = await response.json();
-			number = data.number;
-		} else {
-			console.error('Failed to fetch quantum random number');
-		}
+		numbers = handleFetchNewNumbers();
+		word = generateRandomWord(await numbers);
 		pageReady = true;
 	});
 </script>
@@ -52,9 +40,3 @@
 		>Generate Mantra</button
 	>
 {/if}
-
-<form method="post" action="/src/routes/+page.server.ts/?generateQuantumNumber">
-	<button type="submit">Generate Quantum Number</button>
-</form>
-
-<h1>The Quantum Number is: {number}</h1>
