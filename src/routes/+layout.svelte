@@ -39,4 +39,19 @@
 	<div class="flex flex-col items-center">
 		<slot />
 	</div>
+
+	<!-- footer -->
+	<svelte:fragment slot="footer">
+		<div class="flex flex-col items-center space-y-2">
+			<p class="text-sm text-gray-500">&copy; 2024 Danny Cisco. All rights reserved.</p>
+			<div>
+				<a
+					href="https://qrng.anu.edu.au/"
+					class="text-sm text-gray-500 hover:text-gray-400"
+					target="_blank"
+					rel="noopener noreferrer">Powered by Quantum Random Number Generator (ANU QRNG)</a
+				>
+			</div>
+		</div>
+	</svelte:fragment>
 </AppShell>

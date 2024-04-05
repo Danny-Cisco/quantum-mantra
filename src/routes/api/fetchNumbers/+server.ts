@@ -1,4 +1,7 @@
 // src/routes/api/fetchNumbers/+server.ts
+
+// this is the api endpoint for the quantum random numbers
+
 import { VITE_API_URL, VITE_API_KEY } from '$env/static/private';
 
 export async function GET(): Promise<Response> {
