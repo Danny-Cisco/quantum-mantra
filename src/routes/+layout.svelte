@@ -47,9 +47,11 @@
 			<div>
 				<a
 					href="https://qrng.anu.edu.au/"
-					class="text-sm text-gray-500 hover:text-gray-400"
+					class="text-sm text-gray-500 text-center hover:text-gray-400"
 					target="_blank"
-					rel="noopener noreferrer">Powered by Quantum Random Number Generator (ANU QRNG)</a
+					rel="noopener noreferrer"
+				>
+					⚡️ Powered by QRNG Quantum Random Numbers (ANU)</a
 				>
 			</div>
 		</div>
