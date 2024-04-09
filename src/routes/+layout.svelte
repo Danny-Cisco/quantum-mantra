@@ -39,7 +39,7 @@
 		</AppBar>
 	</svelte:fragment>
 	<!-- Page Route Content -->
-	<div class="flex flex-col items-center">
+	<div class="flex flex-col h-full items-center">
 		<slot />
 	</div>
 
