@@ -24,6 +24,8 @@
 				<strong class="text-xl uppercase text-primary-500">Quantum Mantra</strong>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
+				<a class="btn btn-sm" href="/about" target="" rel="noreferrer"> about </a>
+				<a class="btn btn-sm" href="/" target="" rel="noreferrer"> generate </a>
 				<a
 					class="btn btn-sm variant-outline-primary"
 					href="https://dannycisco.com"
@@ -33,6 +35,7 @@
 					by Danny Cisco
 				</a>
 			</svelte:fragment>
+			<div class="border-2"></div>
 		</AppBar>
 	</svelte:fragment>
 	<!-- Page Route Content -->
