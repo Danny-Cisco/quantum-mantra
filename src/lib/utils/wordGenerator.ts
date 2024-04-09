@@ -69,7 +69,7 @@ export function generateRandomWord(randomNumbers: number[]) {
 		return syllable;
 	}
 
-	const numSyllables = Math.floor(nextRandom() * 3) + 1; // Adjust the random formula to fit your range and precision
+	const numSyllables = Math.floor(nextRandom() * 2) + 2; // Adjust the random formula to fit your range and precision
 	const syllables = [];
 
 	for (let i = 0; i < numSyllables; i++) {
