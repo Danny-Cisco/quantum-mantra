@@ -13,12 +13,12 @@
 	let lottiePlayer: LottiePlayer;
 
 	async function handleClick() {
-		lottiePlayer.stop();
+		// lottiePlayer.stop();
 		word = '';
 
-		setTimeout(() => {
-			lottiePlayer.play();
-		}, 1000);
+		// setTimeout(() => {
+		// 	lottiePlayer.play();
+		// }, 1000);
 		numbers = await handleFetchNewNumbers();
 		setTimeout(() => {
 			word = generateRandomWord(numbers);
@@ -58,15 +58,15 @@
 		<div class="h-[24px]"></div>
 
 		<div
-			class="absolute w-full h-full top-0 left-0 z-[-1] flex flex-col justify-center items-center"
+			class="absolute w-full h-full top-[-24px] left-0 z-[-1] flex flex-col justify-center items-center"
 		>
 			<LottiePlayer
 				bind:this={lottiePlayer}
-				src="/lottie/fancy-loader.json"
+				src="/lottie/fancy-loader2.json"
 				height={900}
 				width={900}
 				autoplay={true}
-				loop={false}
+				loop={true}
 			/>
 		</div>
 	{/if}
